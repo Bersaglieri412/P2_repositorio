@@ -35,120 +35,49 @@ public class compresionImagen {
 
 		
 		ArbolNArio<Character> ar = new ArbolNArio('º');
-	    compresionImagen.compresion(i, ar);
+	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
 	    String s = ar.toString();
+	    int cont = 0;
 		for(int j=0;j<s.length();j++) {
 			
-			if(s.charAt(j)!='º') System.out.println("\t"+s.charAt(j));
-			else System.out.println(s.charAt(j));
+			if(s.charAt(j)!='º' || cont==3) {
+				System.out.println("\t"+s.charAt(j));
+				cont=0;
+			}
+			else {
+				cont++;
+				System.out.println(s.charAt(j));
+			}
 		}
 	}
-	public static boolean compararMatriz(char[][] c) {
+	public static boolean compararMatriz(char[][] c,int iF,int fF,int iC,int fC) {
 		boolean seguir=true;
-		int n=c.length;
-		char a=c[0][0];
-		for(int i=0; i<n && seguir;i++) {
-			for(int j=0;j<n&&seguir;j++) {
-				if(c[i][j]!=a) seguir=false;
-			}
-		}
-		
-		
-		return seguir;
-	}
-	public static ArbolNArio<Character> compresion(char[][] c,ArbolNArio<Character> ar) {
-		ArbolNArio<Character> a = new ArbolNArio<Character>('º');
-		/*for(int i=0;i<c.length;i++) {
-			for(int j=0;j<c.length;j++) {
-				System.out.print(c[i][j]+" ");
-			}
-			System.out.println();
-		}
-		System.out.println();*/
-		
+				char a=c[iC][iF];
+				for(int i=iC; i<fC && seguir;i++) {
+					for(int j=iF;j<fF&&seguir;j++) {
+						if(c[i][j]!=a) seguir=false;
+					}
+				}
+		return seguir;}
+	
+	public static ArbolNArio<Character> compresion(char[][] c,ArbolNArio<Character> ar,int iF,int fF,int iC,int fC) {
 		//caso base
-		if(compararMatriz(c)) {
-			ar=new ArbolNArio<Character>(c[0][0]);
-			ar.setValor(c[0][0]);
+		if(compararMatriz(c,iF,fF,iC,fC)) {
+			ar=new ArbolNArio<Character>(c[iC][iF]);
+			ar.setValor(c[iC][iF]);
 		 }
 		else {
 			ArbolNArio<Character>[] hijos = new ArbolNArio[4];
 			ar.setHijos(hijos);
 			ar.setValor('º');
-			for(int i =0;i<4;i++) {
-				ar.getHijos()[i]=new ArbolNArio<Character>('º');
-				ar.getHijos()[i]=compresion(crearSubMatriz(c,i+1),ar.getHijos()[i]);
+			for(int i=0;i<4;i++) ar.getHijos()[i]=new ArbolNArio<Character>('º');
+				ar.getHijos()[0]=compresion(c,ar.getHijos()[0],iF,fF/2,iC,fC/2);
+				ar.getHijos()[1]=compresion(c,ar.getHijos()[1],iF+((fF-iF)/2),fF,iC,fC/2);
+				ar.getHijos()[2]=compresion(c,ar.getHijos()[2],iF,fF/2,iC+((fC-iC)/2),fC);
+				ar.getHijos()[3]=compresion(c,ar.getHijos()[3],iF+((fF-iF)/2),fF,iC+((fC-iC)/2),fC);
 			}
-			
-		}
+					
 		return ar;
 	}
-	public static char[][] crearSubMatriz(char[][] c,int a) {
-		 char[][]b= new char[c.length/2][c.length/2];
-		 switch(a) {
-		 case 1:
-			 for(int i =0;i<c.length/2;i++) {
-				 for(int j=0;j<c.length/2;j++) {
-					 b[i][j]=c[i][j];
-				 }
-			 }
-			 break;
-		 case 2:
-			 for(int i =0;i<c.length/2;i++) {
-				 for(int j=c.length/2;j<c.length;j++) {
-					 b[i][j-c.length/2]=c[i][j];
-				 }
-			 }
-			 break;
-		 case 3:
-			 for(int i =c.length/2;i<c.length;i++) {
-				 for(int j=0;j<c.length/2;j++) {
-					 b[i-c.length/2][j]=c[i][j];
-				 }
-			 }
-			 break;
-		 
-	case 4:
-		 for(int i =c.length/2;i<c.length;i++) {
-			 for(int j=c.length/2;j<c.length;j++) {
-				 b[i-c.length/2][j-c.length/2]=c[i][j];
-			 }
-		 }
-		 break;
-	default:
-		System.out.println(a+"No es ningún cuartil");
-		b=null;
-		break;
-	 }
-		 return b;
-	}
-	public static void crearArbol (char[][] c,ArbolNArio<Character> a,int n, int objetivo) {
-		ArbolNArio<Character>[] h = new ArbolNArio[4];
-		ArbolNArio<Character> def = new ArbolNArio<Character>(4);
-		for(int j=0;j<4;j++) h[j]=def;
-		//Caso base
-		if(n==objetivo) {
-			a.setValor('b');
-		}
-		//General
-		else {
-			a.setHijos(h);
-			a.setValor('º');
-			for(int i=0;i<4;i++) crearArbol(c,a.getHijos()[i],n*2,objetivo);
-		}
-		
-	}
-	
-	public static ArbolNArio<Character>[] crearHijos(ArbolNArio<Character> a) {
-		ArbolNArio<Character>[]	h = new ArbolNArio[4];
-		
-		return h;
-	}
-	public static ArbolNArio<Character> crearHijos(ArbolNArio<Character> a,ArbolNArio<Character>[] h) {
-		a.setHijos(h);
-		
-		return h[0];
-	}
-	
 	
 }

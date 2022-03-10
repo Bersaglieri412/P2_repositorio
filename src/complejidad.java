@@ -12,7 +12,7 @@ public class complejidad {
 		char[][] i = compresionImagen.matriz((int)Math.pow(2, j));
 		ArbolNArio<Character> ar = new ArbolNArio<Character>('º');
 		long inicio = System.nanoTime();
-	    compresionImagen.compresion(i, ar);
+	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
 	    long elapsed=System.nanoTime()-inicio;
 	    q.add((int)(Math.pow(2, j))+"x"+((int)(Math.pow(2, j)))+";"+elapsed+"\n");
     	}
