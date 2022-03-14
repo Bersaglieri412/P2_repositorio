@@ -33,12 +33,15 @@ public class ArbolNArio<T> {
 	public void setHijos(ArbolNArio<T>[] hijos) {
 		this.hijos=hijos;
 	}
-	public String preorden(ArbolNArio<Character> ar) {
+	public String preorden(ArbolNArio<Character> ar,int p) {
 		String a="";
 		if(ar!=null) {
+		for(int i =0; i<p;i++)a+="\n";
+		for(int i =0; i<p;i++)a+="\t";
+		p++;
 		a+=ar.getValor();
 		if(ar.getHijos()!=null) {
-			for(int i=0; i<ar.getHijos().length;i++) a+=preorden(ar.getHijos()[i]);
+			for(int i=0; i<ar.getHijos().length;i++) a+=preorden(ar.getHijos()[i],p);
 		}
 		}
 		return a;
@@ -49,7 +52,7 @@ public class ArbolNArio<T> {
 		if(ar!=null) {
 			a= a+ar.getValor();
 			if(ar.getHijos()!=null) {
-				for(int i=0; i<ar.getHijos().length;i++) a+=preorden(ar.getHijos()[i]);
+				for(int i=0; i<ar.getHijos().length;i++) a+=preorden(ar.getHijos()[i],1);
 			}
 			}
 		return a;

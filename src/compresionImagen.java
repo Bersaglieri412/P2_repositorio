@@ -36,8 +36,8 @@ public class compresionImagen {
 		
 		ArbolNArio<Character> ar = new ArbolNArio('º');
 	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
-	    String s = ar.toString();
-	    int cont = 0;
+	  	System.out.println(ar.toString());
+	    /*int cont = 0;
 		for(int j=0;j<s.length();j++) {
 			
 			if(s.charAt(j)!='º' || cont==3) {
@@ -48,7 +48,7 @@ public class compresionImagen {
 				cont++;
 				System.out.println(s.charAt(j));
 			}
-		}
+		}*/
 	}
 	public static boolean compararMatriz(char[][] c,int iF,int fF,int iC,int fC) {
 		boolean seguir=true;
