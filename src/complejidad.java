@@ -14,7 +14,13 @@ public class complejidad {
 		long inicio = System.nanoTime();
 	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
 	    long elapsed=System.nanoTime()-inicio;
-	    q.add((int)(Math.pow(2, j))+"x"+((int)(Math.pow(2, j)))+";"+elapsed+"\n");
+	    
+	    long iniciom = System.currentTimeMillis();
+	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
+	    long elapsedm=System.currentTimeMillis()-iniciom;
+	    
+	    
+	    q.add((int)(Math.pow(2, j))+"x"+((int)(Math.pow(2, j)))+";"+elapsed+";"+elapsedm+"\n");
     	}
 		CrearCSV.iniciar(q);
 		System.out.println("Resultados exportados a csv");

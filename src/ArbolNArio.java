@@ -33,16 +33,6 @@ public class ArbolNArio<T> {
 	public void setHijos(ArbolNArio<T>[] hijos) {
 		this.hijos=hijos;
 	}
-	public String preorden(ArbolNArio<Character> ar) {
-		String a="";
-		if(ar!=null) {
-		a+=ar.getValor();
-		if(ar.getHijos()!=null) {
-			for(int i=0; i<ar.getHijos().length;i++) a+=preorden(ar.getHijos()[i]);
-		}
-		}
-		return a;
-	}
 	public String toString(int p) {		
 		String a="";
 		ArbolNArio ar = this;

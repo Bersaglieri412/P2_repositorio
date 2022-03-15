@@ -13,7 +13,7 @@ public class CrearCSV {
 	try (PrintWriter writer = new PrintWriter("resultadosComplejidad.csv")) {
 
 	      StringBuilder sb = new StringBuilder();
-	      sb.append("Resolucion imagen;Tiempo\n");
+	      sb.append("Resolucion imagen;Tiempo ns; Tiempo ms\n");
 	      while(!q.isEmpty()) sb.append(q.poll());
 	      
 	      writer.append(sb.toString());
