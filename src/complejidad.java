@@ -14,10 +14,8 @@ public class complejidad {
 		long inicio = System.nanoTime();
 	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
 	    long elapsed=System.nanoTime()-inicio;
-	    
-	    long iniciom = System.currentTimeMillis();
-	    compresionImagen.compresion(i, ar,0,i.length,0,i.length);
-	    long elapsedm=System.currentTimeMillis()-iniciom;
+
+	    double elapsedm=elapsed/(1*Math.pow(10, 6));
 	    
 	    
 	    q.add((int)(Math.pow(2, j))+"x"+((int)(Math.pow(2, j)))+";"+elapsed+";"+elapsedm+"\n");
