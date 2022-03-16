@@ -14,7 +14,7 @@ public class leer{
 
     private static final Scanner TECLADO=new Scanner(System.in);
 
-    public static void p(String s){ //metodo encargado de mostrar por pantalla un String 
+    public static void p(String s){
           System.out.println(s);
     }
    	

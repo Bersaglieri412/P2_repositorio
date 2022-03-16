@@ -1,4 +1,7 @@
-
+/*******************************************************************
+* Nombre de la clase: ArbolNArio<T>
+* Descripción de la clase: Se encarga de crear y completar el arbol cuaternario
+*******************************************************************/
 
 public class ArbolNArio<T> {
 	private T valor;

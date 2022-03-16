@@ -1,7 +1,21 @@
 import java.util.Random;
 
+/*******************************************************************
+* Nombre de la clase: compresionImagen
+* Descripción de la clase: Se encargará de comprimir la mariz o comparar la matriz
+*******************************************************************/
+
 public class compresionImagen {
 
+	/*******************************************************************
+	* Nombre del método: matriz 
+	* Descripción del método: Mediante el valor de entrada se creara una matriz cubica de tamaño bxb y se completara con 
+	* 		Random.nextBoolean, siendo B=1 y N=0
+	* Argumentos de llamada: int b
+	* Valor de retorno: char[][] i
+	* Archivos requeridos: -
+	* Lista de excepciones:-
+	*******************************************************************/
 	
 	public static char[][] matriz(int b) {
 		char[][] i = new char[b][b];
@@ -14,6 +28,17 @@ public class compresionImagen {
 		}
 		return i;
 	}
+	
+	/*******************************************************************
+	* Nombre del método: compresion 
+	* Descripción del método: Creará una matriz del tamaño deseado potencia de 2, y se llamará al metodo matriz para completarla,
+	* 		a continuacion se mostrará por pantalla y se llamará al metodo compararMatriz(char[][] c,int iF,int fF,int iC,int fC)
+	* 		y mostrará la matriz comprimida
+	* Argumentos de llamada: -
+	* Valor de retorno: -
+	* Archivos requeridos: -
+	* Lista de excepciones:-
+	*******************************************************************/
 	
 	public static void compresion() {
 		boolean seguir=true;
@@ -39,6 +64,16 @@ public class compresionImagen {
 	  	System.out.println(ar.toString(0));
 	}
 	
+	/*******************************************************************
+	* Nombre del método: compararMatriz 
+	* Descripción del método: Comparará la matriz con los parametros indicados y devolverá true en caso de que 
+	* 		todos los datos sean similares y false si la matriz tiene cuadrantes de distinto color
+	* Argumentos de llamada: char[][] c,int iF (inicio fila),int fF (fin fila),int iC (inicio colmuna),int fC (fin colmuna).
+	* Valor de retorno: boolean seguir
+	* Archivos requeridos: -
+	* Lista de excepciones:-
+	*******************************************************************/
+	
 	public static boolean compararMatriz(char[][] c,int iF,int fF,int iC,int fC) {
 		boolean seguir=true;
 				char a=c[iC][iF];
@@ -48,6 +83,16 @@ public class compresionImagen {
 					}
 				}
 		return seguir;}
+	
+	/*******************************************************************
+	* Nombre del método: ArbolNArio 
+	* Descripción del método: si la matriz es monocromo
+	* Argumentos de llamada: char[][] c,ArbolNArio<Character> ar,int iF (inicio fila),int fF (fin fila),
+	* 		int iC (inicio colmuna),int fC (fin colmuna).
+	* Valor de retorno: ArbolNArio<Character> ar
+	* Archivos requeridos: -
+	* Lista de excepciones:-
+	*******************************************************************/
 	
 	public static ArbolNArio<Character> compresion(char[][] c,ArbolNArio<Character> ar,int iF,int fF,int iC,int fC) {
 		//caso base
