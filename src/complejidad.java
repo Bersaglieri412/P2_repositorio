@@ -13,7 +13,8 @@ public class complejidad {
 	
 	/*******************************************************************
 	* Nombre del método: calculo
-	* Descripción del método: Su funcion es calcular la complejidad con el tiempo de ejecucion. 
+	* Descripción del método: Su funcion es calcular la complejidad con el tiempo de ejecucion. Para ello 
+	* se llamará al método compresión con matrices cuyo orden se irá incrementando en 2^n hasta 1024.
 	* Argumentos de llamada: -
 	* Valor de retorno: -
 	* Archivos requeridos: -
@@ -30,8 +31,9 @@ public class complejidad {
 	    long elapsed=System.nanoTime()-inicio;
 	    
 	    double elapsedm=(double)elapsed/1000000;
-	     System.out.println("Resolución "+(int)Math.pow(2, j)+"x"+(int)Math.pow(2, j)+":\t"+elapsed+"ns\t"+elapsedm+"ms");
-	    q.add((int)(Math.pow(2, j))+"x"+((int)(Math.pow(2, j)))+";"+elapsed+";"+elapsedm+"\n");
+	    String elapsedms=String.valueOf(elapsedm).replace('.', ',');
+	     System.out.println("Resolución "+(int)Math.pow(2, j)+"x"+(int)Math.pow(2, j)+":\t"+elapsed+"ns\t"+elapsedms+"ms");
+	    q.add((int)(Math.pow(2, j))+"x"+((int)(Math.pow(2, j)))+";"+elapsed+";"+elapsedms+"\n");
     	}
 		CrearCSV.iniciar(q);
 		System.out.println("\nResultados exportados a csv");
